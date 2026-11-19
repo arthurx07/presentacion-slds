@@ -1,12 +1,22 @@
-.PHONY: clean all
+LATEX = pdflatex -interaction=nonstopmode -halt-on-error
 
-all : slides abstract
+.PHONY: all clean distclean slides abstract
 
-slides : slides.tex pics/by_sa.png
-	pdflatex slides.tex
+all : slides.pdf abstract.pdf
 
-abstract : abstract.tex pics/by_sa.png
-	pdflatex abstract.tex
+slides : slides.pdf
+abstract : abstract.pdf
 
-clean : 
-	-rm *aux *log *nav *out *snm *toc
+slides.pdf : slides.tex pics/by_sa.png
+	$(LATEX) $<
+	$(LATEX) $<
+
+abstract.pdf : abstract.tex pics/by_sa.png
+	$(LATEX) $<
+	$(LATEX) $<
+
+clean :
+	rm -f *.aux *.log *.nav *.out *.snm *.toc
+
+distclean : clean
+	rm -f slides.pdf abstract.pdf

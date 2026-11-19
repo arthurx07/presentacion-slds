@@ -2,8 +2,9 @@
 
 Este proyecto LaTeX está pensado para ser compilado con pdfTeX.
 
+Para compilar, ejecútese:
 ```
-make all
+make
 ```
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
