@@ -1,10 +1,94 @@
-\documentclass{article}
+\documentclass[catalan, a4paper]{article}
 
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[catalan]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\definecolor{accent}{HTML}{3b3c36}
+% \renewcommand{\familydefault}{\sfdefault}
+
+% - portada
+% - índex
+% - 1 pàgina per persona (si son 2 permès pero algo fas malament)
+% - conclusions
 \begin{document}
-Hi.
+\begin{titlepage}
+    \centering
+    \vfill
 
-- portada
-- índex
-- 1 pàgina per persona (si son 2 permès pero algo fas malament)
-- conclusions
+    {\Huge \bfseries Hardware Lliure \par}
+    \vspace{0.5cm}
+    {\Large \itshape ¿La Nova Frontera? \par}
+
+    \vfill
+
+    {\large \textbf{Grup 7} \par}
+    \vspace{0.6cm}
+    {\large
+        Arnau Cano \quad $\cdot$ \quad Iu Alsina \quad $\cdot$ \quad Martí Osuna \\[0.3cm]
+        Artur Leivar \quad $\cdot$ \quad Pol Gay \par
+    }
+
+    \vfill
+    \includegraphics[height=0.7cm]{pics/by_sa.png}\\[0.4cm]
+    {\large 26 de novembre de 2026 \par}
+    \vspace{0.4cm}
+    {\large SLDS -- Software Lliure y Desenvolupament Social \par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+{\bfseries\color{accent} Arnau Cano Tapia \par}\vspace{-0.4cm}
+\section{¿Qué es el hardware libre?}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. 
+\clearpage
+
+{\bfseries\color{accent} Iu Alsina Virgili \par}\vspace{-0.4cm}
+\section{Iniciativas de creación de hardware libre}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+
+\section{El hardware y los costes, necesidad de elementos comunes (¿hardware de código abierto?)}
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. 
+\clearpage
+
+{\bfseries\color{accent} Martí Osuna Saavedra \par}\vspace{-0.4cm}
+\section{El efecto de las patentes en el hardware, limitaciones al hardware libre}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. 
+\clearpage
+
+{\bfseries\color{accent} Artur Leivar Guiu \par}\vspace{-0.4cm}
+\section{Procesadores y seguridad en el hardware, ¿necesidad o guerra comercial?}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. 
+\clearpage
+
+{\bfseries\color{accent} Pol Gay Hernández \par}\vspace{-0.4cm}
+\section{¿Es el HW un arma y debe\slash{}puede ser controlada? ¿Por quien?}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+
+\section{Para quien tiene sentido el HW libre y para quien es un problema}
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. .
+\clearpage
+
+\section*{Conclusions generals}
+\phantomsection
+\addcontentsline{toc}{section}{Conclusions generals}
+Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. .
+
 \end{document}
