@@ -11,7 +11,6 @@
 
 \usetheme[secheader]{Boadilla}
 \usecolortheme{beaver}
-% \usefonttheme{default}
 
 \AtBeginSection[]{
   \begin{frame}
@@ -20,9 +19,6 @@
     \sectionpage
     \vfill
   \end{frame}
-  % \begin{frame}{Contenidos}
-  %   \tableofcontents[currentsection]
-  % \end{frame}
 }
 
 \title{Hardware Lliure}
@@ -34,9 +30,10 @@
   Artur Leivar \and
   Pol Gay
 }
-\institute[SLDS]{} %{Software Lliure y Desenvolupament Social}
+\institute[SLDS]{}
 \date{26 de novembre de 2026}
-\titlegraphic{\includegraphics[height=0.7cm]{pics/by_sa.png}}
+% Descomenta la siguiente línea cuando subas la imagen pics/by_sa.png:
+% \titlegraphic{\includegraphics[height=0.7cm]{pics/by_sa.png}}
 
 \begin{document}
 
@@ -44,73 +41,127 @@
   \titlepage
 }
 
-% \frame{
-%   \frametitle{Licencia}
-%   This work is under a Creative Commons license “Attribution-ShareAlike 4.0 International”.
-%   This is a human-readable summary of (and not a substitute for) the license
-%   (\url{http://creativecommons.org/licenses/by-sa/4.0/legalcode}). \\
-%   \begin{figure}[htb]
-%     \centering
-%     \includegraphics[height=0.7cm]{pics/by_sa.png}
-%   \end{figure}
-%
-%   \begin{exampleblock}{You are free to:}
-%     \begin{itemize}
-%       \item Share — copy and redistribute the material in any medium or format
-%       \item Adapt — remix, transform, and build upon the material for any purpose, even commercially.
-%     \end{itemize}
-%     The licensor cannot revoke these freedoms as long as you follow the license terms.
-%   \end{exampleblock}
-%   (continúa)
-% }
-%
-% \frame{
-%   \begin{alertblock}{Under the following terms:}
-%     \begin{itemize}
-%       \item Attribution — You must give appropriate credit, provide a link to the
-%             license, and indicate if changes were made. You may do so in any
-%             reasonable manner, but not in any way that suggests the licensor
-%             endorses you or your use.
-%       \item ShareAlike — If you remix, transform, or build upon the material, you
-%             must distribute your contributions under the same license as the
-%             original.
-%     \end{itemize}
-%     No additional restrictions — You may not apply legal terms or technological
-%     measures that legally restrict others from doing anything the license permits.
-%   \end{alertblock}
-%   (continúa)
-% }
-%
-% \frame{
-%   \begin{block}{Notices:}
-%     \begin{itemize}
-%       \item You do not have to comply with the license for elements of the
-%             material in the public domain or where your use is permitted by an
-%             applicable exception or limitation.
-%       \item No warranties are given. The license may not give you all of the
-%         permissions necessary for your intended use. For example, other rights
-%         such as publicity, privacy, or moral rights may limit how you use the
-%         material.
-%     \end{itemize}
-%   \end{block}
-% }
-
 \frame{
   \frametitle{Estructura de la presentació}
   \tableofcontents
 }
 
-\section{Persona 1: XXX}
+% ==========================================
+% PERSONA 1: FONAMENTS I CONCEPTE
+% ==========================================
+\section{Fonaments i Concepte}
 
-\subsection{YYY}
+\subsection{Definició i comparació amb el Software}
 
-\frame{
-  \frametitle{Título}
-  Diapositiva de ejemplo. \\
+\begin{frame}{Què és el Hardware Lliure?}
+  \begin{block}{Idea clau (OSHWA)}
+    Disseny públic per \textbf{estudiar, modificar, distribuir, fabricar i vendre}.
+  \end{block}
   \pause
-  Texto de ejemplo.
-}
+  \vspace{0.4cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Hardware Lliure}
+        \begin{itemize}
+          \item Plànols i components oberts
+          \item Auditable i reparable
+          \item \textit{Ex: Arduino, RISC-V, Prusa}
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Hardware Propietari}
+        \begin{itemize}
+          \item «Caixa negra» tancada
+          \item Patents i secret industrial
+          \item Dependència del fabricant
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
 
+\begin{frame}{Software vs. Hardware}
+  \begin{center}
+    \Large \textbf{«Els àtoms no es copien gratis»}
+  \end{center}
+  \vspace{0.3cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Software Lliure (Bits)}
+        \begin{itemize}
+          \item Cost de còpia $\approx 0$
+          \item Distribució instantània
+          \item Corregir errors és barat
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \pause
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Hardware Lliure (Àtoms)}
+        \begin{itemize}
+          \item Matèria prima, fàbriques i logística
+          \item Cost per unitat física
+          \item Fabricar un xip erroni costa milions
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Nivells d'obertura i llicències}
+
+\begin{frame}{Nivells d'Obertura}
+  \begin{enumerate}
+    \item \textbf{Placa i Sistema}
+      \begin{itemize}
+        \item Esquemàtics, PCB (Gerber), CAD 3D i llista de peces (BOM)
+      \end{itemize}
+    \pause
+    \vspace{0.25cm}
+    \item \textbf{Lògica Digital (RTL)}
+      \begin{itemize}
+        \item Codi \textbf{VHDL / Verilog} (arquitectura interna del xip)
+      \end{itemize}
+    \pause
+    \vspace{0.25cm}
+    \item \textbf{Silici Físic (Layout GDSII)}
+      \begin{itemize}
+        \item Plànol geomètric final llest per a la foneria (\textit{foundry})
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Llicències de Hardware Lliure}
+  \textit{El copyright del software no cobreix objectes físics ni patents:}
+  \vspace{0.4cm}
+  \begin{itemize}
+    \item \textbf{CERN OHL:} Ciència i instrumentació (permissiva o \textit{copyleft})
+    \pause
+    \vspace{0.25cm}
+    \item \textbf{TAPR OHL:} Pionera; obliga a compartir les millores (\textit{copyleft})
+    \pause
+    \vspace{0.25cm}
+    \item \textbf{Solderpad:} Basada en Apache 2.0; cessió de patents (\textit{RISC-V})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{En resum}
+  \begin{block}{3 idees per recordar}
+    \begin{itemize}
+      \item Obre el disseny, però el cost dels \textbf{àtoms} limita la producció
+      \item L'obertura real va de l'\textbf{esquemàtic} al \textbf{layout GDSII}
+      \item Marc legal propi: \textbf{CERN OHL, TAPR i Solderpad}
+    \end{itemize}
+  \end{block}
+  \vspace{0.4cm}
+  \centering
+  \textit{Qui està impulsant això avui a la pràctica?}
+\end{frame}
+
+% ==========================================
+% SEGÜENT SECCIÓ DEL GRUP
+% ==========================================
 \section{Seguretat del hardware: necessitat i guerra comercial}
 
 \frame{
