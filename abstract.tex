@@ -50,12 +50,39 @@
 \pagenumbering{arabic}
 
 {\bfseries\color{accent} Arnau Cano Tapia \par}\vspace{-0.4cm}
-\section{¿Qué es el hardware libre?}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
+\section{Què és el hardware lliure?}
 
-Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. 
+\textbf{Definició i comparació amb el model propietari}
+
+Segons l'\textit{Open Source Hardware Association} (OSHWA), el hardware lliure és aquell el disseny del qual es fa públic perquè qualsevol persona pugui estudiar-lo, modificar-lo, distribuir-lo, fabricar-lo i vendre'l. A diferència del hardware propietari ---que funciona com una «caixa negra» blindada per patents i secrets industrials, generant dependència del fabricant i obsolescència forçada---, el model obert proporciona plànols, esquemàtics i llistes de materials (BOM) auditables i reparables (com Arduino, RISC-V o les impressores Prusa).
+
+\textbf{Software lliure vs. Hardware lliure: Bits enfront d'Àtoms}
+
+Tot i compartir filosofia, el hardware no es regeix per les mateixes regles econòmiques que el software perquè opera amb \textbf{àtoms i no amb bits}:
+\begin{itemize}
+    \item \textbf{Cost de reproducció:} El software té un cost marginal de còpia gairebé nul; en canvi, els àtoms no es copien gratis i cada unitat física exigeix matèries primeres, energia, fàbriques i logística.
+    \item \textbf{Cost de l'error:} Corregir un error de codi és immediat, mentre que fabricar un circuit integrat defectuós implica pèrdues milionàries en màscares litogràfiques.
+    \item \textbf{Dependències tancades:} Moltes plaques considerades obertes integren microcontroladors propietaris interns que limiten la llibertat real del conjunt.
+\end{itemize}
+
+\textbf{Nivells d'obertura tècnica}
+
+La llibertat real d'un dispositiu depèn de fins a quina capa física es publica el seu disseny:
+\begin{enumerate}
+    \item \textbf{Nivell de placa i sistema:} Esquemàtics elèctrics, fitxers de circuits impresos (Gerber), models CAD 3D i llista de components (BOM).
+    \item \textbf{Nivell de lògica digital (RTL):} Codi de descripció de hardware (\textbf{VHDL} o \textbf{Verilog}) que defineix l'arquitectura interna d'un processador o FPGA.
+    \item \textbf{Nivell físic de silici (Layout GDSII):} Plànol geomètric final dels transistors llest per enviar a una foneria (\textit{foundry}), avui accessible gràcies a kits de disseny (PDK) oberts.
+\end{enumerate}
+
+\textbf{Marc legal i llicències específiques}
+
+Les llicències de software (GPL, MIT) es basen en els drets d'autor, insuficients per regular objectes tangibles i patents industrials. Per això s'utilitzen llicències adaptades al hardware:
+\begin{itemize}
+    \item \textbf{CERN OHL:} Creada pel CERN per a instrumentació científica, amb variants permissives i de \textit{copyleft}.
+    \item \textbf{TAPR OHL:} Pionera en el sector; obliga a compartir qualsevol millora feta sobre els plànols físics (\textit{copyleft}).
+    \item \textbf{Solderpad Hardware License:} Adaptació d'Apache 2.0 amb cessió explícita de patents, estàndard en projectes de xips com RISC-V.
+\end{itemize}
 \clearpage
-
 {\bfseries\color{accent} Iu Alsina Virgili \par}\vspace{-0.4cm}
 \section{Iniciativas de creación de hardware libre}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
