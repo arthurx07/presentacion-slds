@@ -13,7 +13,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 \definecolor{accent}{HTML}{3b3c36}
-% \renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
 \begin{titlepage}
@@ -193,31 +192,73 @@ patents que va usar per la creació del producte generen encara avui dia un enor
 
 \textbf{Restriccions comercials entre els EUA i la Xina}
 
-Des del 2019, els Estats Units han exclòs Huawei i ZTE de les xarxes 5G per risc d'espionatge, han prohibit exportar xips avançats d'IA (NVIDIA, AMD) i maquinària EUV (ASML), han destinat subsidis a relocalitzar fàbriques i han aplicat aranzels del 50\,\% als semiconductors xinesos. La Xina ha respost vetant les memòries Micron en infraestructures crítiques (2023), restringint l'exportació de gal·li i germani i aplicant la directiva «Delete A» (2022--2027) per substituir processadors Intel i AMD al sector públic per dissenys propis o basats en RISC-V. El debat és si aquests vetos responen a motius reals de seguretat o a una disputa econòmica, i quin paper hi té el hardware lliure.
+Des del 2019, els Estats Units han exclòs a Huawei i ZTE de les xarxes 5G per risc d'espionatge i
+han aplicat aranzels del 50\% als semiconductors xinesos, entre altres mesures.
+D'altra banda, la Xina ha respost restringint l'exportació de ga\lgem{}i i germani, i aplicant
+una directiva que imposa al sector públic xinès la substitució de processadors Intel i AMD per
+dissenys propis o basats en RISC-V. \\
+El debat és si aquests vetos responen a motius reals de seguretat o a una disputa econòmica, i quin
+paper hi té el hardware lliure.
 
-\textbf{Vulnerabilitats i vectors d'atac}
+\textbf{Vulnerabilitats al hardware i vectors d'atac}
 
-Una vulnerabilitat al hardware és un defecte o característica en el disseny lògic (RTL), la implementació o la fabricació dels components físics que pot comprometre la confidencialitat, la integritat o la disponibilitat d'un sistema (tríada CIA, adaptat de MITRE CWE-1194). Al llarg de la cadena de subministrament destaquen tres vectors d'atac:
+
+Una vulnerabilitat al hardware és un defecte o característica en el disseny lògic (RTL),
+la implementació o la fabricació dels components físics que pot comprometre la confidencialitat,
+la integritat o la disponibilitat d'un sistema (tríada CIA, adaptat de MITRE CWE-1194).
+
+Al llarg de la cadena de subministrament destaquen tres vectors d'atac:
 \begin{itemize}
-    \item \textbf{Disseny i EDA:} fallades de microarquitectura (\textit{Spectre}, \textit{Meltdown}, \textit{Rowhammer}) i subsistemes opacs com l'Intel Management Engine (ME) o l'AMD PSP. L'Intel ME executa un MINIX3 modificat fins i tot amb l'equip apagat, té accés a la RAM, als discos encriptats, als perifèrics i a la xarxa, i ha acumulat vulnerabilitats crítiques (2017--2019). El fet que la NSA demanés a Intel el bit ocult \textit{HAP} per aturar-lo en equips classificats evidencia la desconfiança que genera.
-    \item \textbf{Foneria:} alteracions deliberades del circuit durant la impressió de l'oblia (\textit{Hardware Trojans}), com el presumpte \textit{kill switch} als radars antimíssils sirians atribuït a l'Operació «The Orchard» (2007).
-    \item \textbf{Muntatge i firmware:} implants físics a plaques base ---casos \textit{Supermicro} (2018, negat oficialment) o \textit{Shotgiant} de la NSA (2013)--- i firmware preinfectat de fàbrica, com la xarxa \textit{BadBox}, present en centenars de milers de dispositius Android des del 2023.
+    \item \textbf{Disseny:} Fallades greus de microarquitectura (\textit{Spectre}, \textit{Meltdown},
+      \textit{Row hammer}) i subsistemes opacs com l'Intel Management Engine (ME) o l'AMD PSP.
+    En concret, L'IME executa un MINIX3 modificat fins i tot amb l'equip apagat, té accés a la RAM,
+    als discos (tot i que estiguin encriptats), als perifèrics i a la xarxa, i ha acumulat
+    vulnerabilitats crítiques. El fet que la NSA demanés a Intel implementar un bit ocult
+    \textit{HAP} per aturar-lo en equips classificats evidencia la desconfiança que genera.
+
+    \item \textbf{Foneria:} Alteracions deliberades del circuit durant la impressió de
+      l'oblia (\textit{Hardware Trojans}), com el presumpte \textit{kill switch} als radars
+      antimíssils sirians per part dels israelians, atribuït a l'Operació «The Orchard» (2007).
+
+    \item \textbf{Muntatge i firmware:} Implants físics a plaques base (casos \textit{Supermicro}
+      (2018, negat oficialment) o \textit{Shotgiant} de la NSA (2013)) i firmware preinfectat de
+      fàbrica, com la xarxa \textit{BadBox}, present en centenars de milers de dispositius (televisions) Android des del 2023.
 \end{itemize}
 
 \textbf{Oligopoli geopolític i abast dels riscos}
 
-La producció de xips es concentra en molt poques empreses dividides en dos blocs. Sota l'òrbita nord-americana hi ha les oblies del Japó ($>50\,\%$), el disseny (Intel, AMD, NVIDIA, Qualcomm, Apple, ARM), el monopoli d'ASML en litografia EUV i les foneries punteres (TSMC, Samsung); la Xina controla minerals crítics i desenvolupa alternatives pròpies (HiSilicon, T-Head, SMEE, SMIC, YMTC, CXMT). Alterar el silici o soldar implants té un cost alt i s'adreça a l'espionatge estatal, la defensa i les infraestructures crítiques; els subsistemes opacs continuen sent una incògnita, mentre que el firmware preinfectat (\textit{BadBox}) és barat i sí que arriba als usuaris convencionals.
+La producció de xips al món es concentra en molt poques empreses que a gran escala es poden
+dividir en dos blocs. Sota l'òrbita nord-americana hi ha les oblies del Japó ($>50\%$ producció oblies mundials),
+el disseny (Intel, AMD, NVIDIA, Qualcomm, Apple, ARM), el monopoli d'ASML en litografia EUV i les
+fonieries punteres (TSMC i Samsung).
+
+La Xina, per la seva banda, controla minerals crítics i desenvolupa alternatives pròpies
+que encara no es troben al nivell del rival
+(Huawei HiSilicon, Alibaba T-Head, SMEE, SMIC, YMTC o CXMT).
+
+Doncs, concluim que com alterar el silici o soldar implants té un cost alt, moltes de
+les vulnerabilitats que poden afectar al hardware s'adrecen a l'espionatge estatal, la defensa
+i les infrestructures crítiques; els subsistemes opacs continuen sent una incòginta; però
+el firmware preinfectat (cas \textit{Badbox}) és barat i sí que ha arribat a usuaris convencionals.
 
 \textbf{El paper del hardware lliure i els seus límits}
 
-El model tancat (\textit{security through obscurity}) exigeix una confiança cega en el fabricant. El hardware lliure permet auditar públicament el disseny abans de fabricar-lo, sempre que no es confongui RISC-V (només l'ISA) amb un xip obert: cal publicar el codi RTL (Verilog) i el firmware per descartar portes del darrere. A l'arrencada, xips d'arrel de confiança com \textit{OpenTitan} (impulsat inicialment per Google) verifiquen criptogràficament que el firmware no ha estat manipulat i es poden combinar amb \textit{coreboot} o \textit{linuxboot}, tot i el seu suport reduït.
+El model tancat (\textit{security through obscurity}) exigeix una confiança cega en el fabricant.
+El hardware lliure, sempre que es tingui el codi RTL (Verilog) i el firmware, permet auditar públicament el disseny
+abans de fabricar-lo per trobar vulnerabilitats i descartar \textit{backdoors}.
 
-El disseny obert no evita, però, la manipulació física a la foneria ni els implants en placa. Cal complementar-lo amb inspeccions físiques destructives sobre mostres per comprovar que el silici coincideix amb l'RTL i amb \textit{friend-shoring}, aprofitant que Europa ja disposa de fàbriques en nodes de 12--28\,nm suficients per a molts usos. El hardware lliure elimina les caixes negres i aporta sobirania tecnològica a països fora de l'eix EUA--Xina, però no aturarà la guerra comercial: els xips no en són la causa, sinó un front més en la disputa per l'hegemonia econòmica i tecnològica entre les dues potències.
-\clearpage
+A més, existeixen xips de seguretat com \textit{OpenTitan} que verifiquen criptogràficament
+que el firmware no ha estat manipulat, per tant solventant (parcialment) el problema del
+firmware preinfectat.
 
-{\bfseries\color{accent} Pol Gay Hernández \par}\vspace{-0.4cm}
-\section{¿Es el HW un arma y debe\slash{}puede ser controlada? ¿Por quien?}
-\section{Para quien tiene sentido el HW libre y para quien es un problema}
+El disseny obert no evita, però, la manipulació física a la foneria ni els implants en placa.
+Cal complementar-lo amb inspeccions físiques sobre mostres per comprovar que el silici coincideix
+amb l'RTL i amb \textit{friend-shoring}, aprofitant que Europa, per exemple, ja disposa de fàbriques amb nodes
+de 12--28 nm suficients per a molts usos.
+
+Per acabar, remarquem que el hardware lliure elimina les caixes negres i aporta sobirania
+tecnològica a països fora de l'eix EUA--Xina, però no aturarà la guerra comercial: els xips
+no en són la causa, sinó un front més en la disputa per l'hegemonia econòmica i tecnològica entre les dues potències.
 \clearpage
 
 \end{document}
