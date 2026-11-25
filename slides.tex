@@ -282,9 +282,9 @@
   \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
     \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
     \hline
-    \textbf{1. Matèries i oblees}
+    \textbf{1. Matèries i oblies}
       & El silici i la làmina on es fabriquen els xips
-      & {\color{green!50!black}\textbf{Sí:}} oblea compartida\par
+      & {\color{green!50!black}\textbf{Sí:}} oblia compartida\par
         {\color{red!65!black}\textbf{No:}} silici de cada xip \\[0.35em]
     \textbf{2. Disseny i EDA}
       & El plànol del circuit i el programari per dibuixar-lo
@@ -303,8 +303,8 @@
   \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
     \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
     \hline
-    \textbf{4. Fundició}
-      & La fàbrica que imprimeix l'oblea
+    \textbf{4. Foneria}
+      & La fàbrica que imprimeix l'oblia
       & {\color{green!50!black}\textbf{Sí:}} accés (Europractice)\par
         {\color{red!65!black}\textbf{No:}} la fàbrica sencera \\[0.35em]
     \textbf{5. Empaquetat, proves, fusibles}
@@ -325,7 +325,7 @@
     Només surt a compte si en vens molts.
   \end{alertblock}
   \vspace{0.35cm}
-  \begin{exampleblock}{Si compartiu l'oblea (Europractice)}
+  \begin{exampleblock}{Si compartiu l'oblia (Europractice)}
     Diversos dissenys paguen la mateixa màscara.\\
     Un prototip universitari: del \textbf{5 al 10\%} del cost.\\
     Amb PDK obert: uns \textbf{10.000 \$} i unes desenes de xips.
@@ -427,47 +427,41 @@
 % SEGÜENT SECCIÓ DEL GRUP
 % ==========================================
 
-\section{Seguretat del hardware: necessitat i guerra comercial}
+\section{Seguretat al hardware i guerra comercial}
 
-% TODO
-% En aquesta secció analitzarem si les mesures actuals de control i protecció sobre
-% els xips, tant el tancament dels seus dissenys com les restriccions internacionals, responen
-% a una necessitat tècnica real de ciberseguretat (fer els xips més segurs pels usuaris) o si
-% s'estan utilitzan com una arma dins dins d'una guerra comercial i geopolítica entre els
-% Estats Units i la Xina per frenar el desenvolupament tecnològic i militar del rival.
-% (aixó ara està a l'ordre del día, també és per secret comercial entre una empresa i
-% una altra).
+% En aquesta secció analitzarem les possibles vulnerabilitats que poden existir al hardware,
+% i com lliguen amb l'actual guerra comercial entre la Xina i els Estats Units.
 
+% Començarem fent un petit resum de les restriccions imposades entre els dos països.
 \frame{
   \frametitle{Historial de les restriccions EUA - Xina}
-  % TODO
-  \textbf{TODO. NO TROBO LES RESTRICCIONS IMPORTANTS.}
-  \begin{columns}[T]
-    \column{0.48\textwidth}
-    \begin{block}{Estats Units}
-      \begin{itemize}
-        \item Veto a Huawei i ZTE per lex xarxes 5G
-        \item Two Two Two Two Two Two
-        \item Three Three Three Three Three
-      \end{itemize}
-    \end{block}
+  \begin{block}{Estats Units}
+    \begin{itemize}
+      \item \textbf{2019-}: Exclusió de Huawei i ZTE de les xarxes 5G, per risc d'espionatge i \textit{backdoors}
+      \item \textbf{2022-}: Prohibició d'exportar xips avançats d'IA (NVIDIA, AMD) i maquinària EUV (ASML)
+      \item \textbf{2022-}: Milers de milions per relocalitzar fàbriques. Aranzels del 50\% als semiconductors xinesos.
+    \end{itemize}
+  \end{block}
 
-    \column{0.48\textwidth}
-    \begin{alertblock}{Xina continental}
-      \begin{itemize}
-        \item One One One One One
-        \item Two Two Two Two Two Two
-        \item Three Three Three Three Three
-      \end{itemize}
-    \end{alertblock}
-  \end{columns}
+  \pause
+  \begin{alertblock}{Xina continental}
+    \begin{itemize}
+      \item \textbf{2023}: Veto dels xips de memòria Micron en infraestructures crítiques per «seguretat nacional»
+      \item \textbf{2023-}: Restriccions a l'exportació de ga\lgem{i} i germani
+      \item \textbf{2022-2027}: Directiva «Delete A», substitució de xips Intel i AMD al sector públic per xips propis o RISC-V
+      % Més de la meitat dels xips basats en RISC-V fabricats al planeta provenen d'empreses xineses}
+    \end{itemize}
+  \end{alertblock}
 }
 
+% I aixó ens porta a fer-nos la pregunta:
 \frame{
   \centering
   \textbf{\textit{Aquests vetos són per causes de «seguretat» \footnote{és a dir, espionatge} o per una guerra econòmica?}} \\
+  \vspace{0.8cm}
   \pause
   \textit{O per les dues?} \\
+  \vspace{0.8cm}
   \pause
   \textit{I quin paper pot tenir aquí el hardware lliure?}
 }
@@ -476,20 +470,25 @@
 
 \frame{
   \frametitle{Definició d'una vulnerabilitat al hardware}
-  Defectes, fallades o característiques intencionades en el \textbf{disseny} lògic, la \textbf{implementació} o la \textbf{fabricació} dels
-  components físics que, sota certes condicions, poden ser explotats per comprometre
-  la confidencialitat, la integritat o la disponibilitat del sistema. \footnote[frame]{Adaptat de MITRE (\textit{CWE-1194: Weaknesses in Hardware Design}).}
+  Defectes, fallades o característiques en el 
+  \begin{itemize}
+    \item \textbf{disseny} lògic, 
+    \item la \textbf{implementació}, o
+    \item la \textbf{fabricació} dels components físics
+  \end{itemize}
+  que puguin ser explotats per comprometre la
   \pause
-  \begin{exampleblock}{Recordem: CIA}
+  \begin{exampleblock}{Tríada CIA}
     \begin{itemize}
       \item \textit{Confidentiality}: Llegir dades.
       \item \textit{Integrity}: Modificar dades o comportament del xip.
       \item \textit{Availability}: Bloquejar, \textit{crash} o inutilitzar el hardware.
     \end{itemize}
   \end{exampleblock}
+  \footnote[frame]{Adaptat de MITRE (\textit{CWE-1194: Weaknesses in Hardware Design}).}
 }
 
-\begin{frame}{Introducció de vulnerabilitats: cadena de subministrament}
+\begin{frame}{Vectors d'atac a la cadena de subministrament (I)}
   \begin{enumerate}
     \item \textcolor{black!35}{Matèries primeres i oblees}
     \item \textbf{\textcolor{structure}{Disseny i programari EDA}}
@@ -498,70 +497,70 @@
           % Spectre: The speculative execution resulting from a branch misprediction may leave observable side effects that may reveal private data to attackers.
           % Meltdown: It allows a rogue process to read all memory, even when it is not authorized to do so.
           % Row hammer: Change contents of memory rows not addressed in original DRAM memory access, used in some privilege escalation exploits.
-          \pause
-
-          % TODO: IME
-          \item \textbf{Backdoors:} L'IME (Intel Management Engine) és un firmware propietari emmagatzemat directament al hardware (gravat al silici).
-          No es pot desactivar. \\
-          % Corre fins i tot quan el PC està apagat
-          Zammit: «seguretat per foscor». Accés total a RAM, pantalla, teclat i xarxa (servidor TCP/IP propi). % Font fiable? EFF? AMD PSP. Xinesos ves tu a saber.
-
-          \centering
-          \includegraphics[width=0.15\textwidth]{pics/ime.png}
+        \item \textbf{Subsistemes opacs (possibles \textit{backdoors}):} Intel ME i AMD PSP.
       \end{itemize}
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Introducció de vulnerabilitats: cadena de subministrament}
+\frame{
+  \frametitle{Subsistemes opacs o \textit{backdoors}: Intel Management Engine}
+  \begin{itemize}
+    \item Processador x86 de 32 bits que executa MINIX3 modificat, al costat de la CPU principal.
+    \item No es pot desactivar al 100\%.
+    \item Funciona amb l'ordinador «apagat». 
+    \item Inicialitza l'equip i dona pas a la CPU.
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Subsistemes opacs o \textit{backdoors}: Intel Management Engine}
+  \begin{itemize}
+    \item Usat per empreses per encendre, reinsta\lgem{}ar o reparar milers d'ordinadors a distància.
+    \pause
+    \item \textbf{Accés a la RAM, a discos encriptats, a la pantalla, al teclat i a la xarxa.}
+    \pause
+    \item NSA so\lgem{}icita a Intel un bit ocult \textit{HAP} que, si està actiu, atura el ME just després d'arrencar en ordinadors classificats.
+    \item S'han trobat vulnerabilitats amb CVEs de nivell Alt i Crític (2017-2019).
+  \end{itemize}
+}
+
+\begin{frame}{Vectors d'atac a la cadena de subministrament (II)}
   \begin{enumerate}
     \item \textcolor{black!35}{Matèries primeres i oblees}
     \item \textcolor{black!35}{Disseny i programari EDA}
     \item \textcolor{black!35}{Fabricació de maquinària}
-    \item \textbf{\textcolor{structure}{Fundició o impressió de l'oblea}}
+    \item \textbf{\textcolor{structure}{Foneria o impressió de l'oblia}}
       \begin{itemize}
           \item \textbf{Hardware Trojan físic}: Alteració deliberada del circuit durant la fabricació a la \textit{foundry}. \\
           \pause
-          \item «The Orchard» (2007): Israel desactiva a distància les defenses antimíssils de Síria durant un atac.
+        \item \textbf{Operació «The Orchard» (2007)}: Segons IEEE Spectrum existia un \textit{kill switch} als xips dels radars per desactivar-los a distància.
           \item \textcolor{black!35}{Altres: Dopatge de transistors Intel Ivy Bridge 2013; xip militar Actel / Microsemi ProASIC3 2012}
       \end{itemize}
   \end{enumerate}
 \end{frame}
 
-% \begin{frame}{Introducció de vulnerabilitats: cadena de subministrament}
-%   \begin{enumerate}
-%     \item \textcolor{black!35}{Matèries primeres i oblees}
-%     \item \textcolor{black!35}{Disseny i programari EDA}
-%     \item \textcolor{black!35}{Fabricació de maquinària}
-%     \item \textcolor{black!35}{Fundició o impressió de l'oblea}
-%     \item \textbf{\textcolor{structure}{Empaquetat, proves i gravat de fusibles}}
-%       \begin{itemize}
-%         \item \textbf{Manipulació de claus d'arrencada:} alteració de les claus criptogràfiques gravades físicament als fusibles interns del xip (ex. \textit{Intel Boot Guard}).
-%         \item \textbf{Falsificació de components:} substitució o reciclatge fraudulent de xips abans de l'assemblatge final.
-%       \end{itemize}
-%   \end{enumerate}
-% \end{frame}
-
-\begin{frame}{Introducció de vulnerabilitats: cadena de subministrament}
+\begin{frame}{Vectors d'atac a la cadena de subministrament (III)}
   \begin{enumerate}
     \item \textcolor{black!35}{Matèries primeres i oblees}
     \item \textcolor{black!35}{Disseny i programari EDA}
     \item \textcolor{black!35}{Fabricació de maquinària}
-    \item \textcolor{black!35}{Fundició o impressió de l'oblea}
+    \item \textcolor{black!35}{Foneria o impressió de l'oblia}
     \item \textcolor{black!35}{Empaquetat, proves i gravat de fusibles}
     \item \textbf{\textcolor{structure}{Muntatge en placa i càrrega de firmware}}
       \begin{itemize}
-        \item Modificació de la placa base abans que arribi al client final.
+        \item Modificació de la placa o preinfecció del firmware abans d'arribar al client final.
         \pause
-        \item «Shotgiant» (2013): La NSA interceptava, mitjançant implants a la placa base, enviaments d'equips de xarxa (Cisco...) cap a l'estranger.
-        \item «Supermicro / The Big Hack» (2018): Segons Bloomberg, microxip soldat a plaques bases usades per Amazon, Apple i govern EUA, a causa d'agents Xinesos.
-        \item \textcolor{black!35}{Altres: cas BadBox (2023-2026)}
-        % En ambdós casos l'atac es produeix en etapes finals de muntatge o distribució, fora del control del dissenyador original del xip.
+      \item \textbf{«Supermicro / The Big Hack» (2018)}: Segons Bloomberg, microxip soldat a plaques base d'Amazon, Apple i el govern dels EUA per agents xinesos (\textit{negat oficialment}).
+      \item \textbf{Xarxa «BadBox» (des de 2023):} Centenars de milers de dispositius Android venuts amb firmware maliciós de fàbrica.
+      \item \textcolor{black!35}{«Shotgiant» (2013): La NSA interceptava, mitjançant implants a la placa base, enviaments d'equips de xarxa (Cisco...) cap a l'estranger.}
+        % Atac en etapes finals de muntatge o distribució, fora del control del dissenyador original del xip.
       \end{itemize}
   \end{enumerate}
 \end{frame}
 
 \subsection{Guerra comercial}
 
+% D'altra banda, si veiem el hardware actual des del prisma d'una guerra comercial, veiem dos grans blocs diferenciats:
 \begin{frame}{Dos grans blocs en aquesta guerra comercial}
     \footnotesize
     \renewcommand{\arraystretch}{1.35}
@@ -569,27 +568,37 @@
         \toprule
         \textbf{Fase} & \textbf{EUA i àrea d'influència} & \textbf{Xina} \\
         \midrule
-        \textbf{1. Matèries i oblees} & xxx  & xxx \\
-        \textbf{2. Disseny}           & Intel, AMD, NVIDIA, Qualcomm, Apple, ARM & ??Huawei (HiSilicon), Alibaba?? \\
-        \textbf{3. Litografia}        & ASML & ??SMEE?? \\
+        \textbf{1. Matèries i oblies} & Japó ($>50\% oblies$) & Minerals crítics\\
+        \textbf{2. Disseny}           & Intel, AMD, NVIDIA, Qualcomm, Apple, ARM & Huawei (HiSilicon), Alibaba (T-Head) \\
+        \textbf{3. Litografia}        & ASML & SMEE \\
         % ASML: Neerlandesa, país OTAN. Monopoli mundial en litografia EUV
-        \textbf{4. Fundició}          & TSMC, Samsung, \textit{Intel} & ??SMIC, YMTC?? \\
+        \textbf{4. Foneria}          & TSMC, Samsung, \textit{Intel} & SMIC, YMTC, CXMT \\
         % TSMC: Taiwan, dependència tecnològica i militar EUA. Fabrica 90% xips més avançats.
         % Samsung: Corea del Sud, 28mil militars dels EUA país.
         % Intel: Ha perdut lideratge
-        \textbf{5. Empaquetat}        & xxx & xxx \\
-        \textbf{6. Muntatge}          & xxx & xxx \\
+
+        % SMIC ($10B revenue): 3er chip maker del món.
+        % YMTC ($10B revenue): SSDs
+        % CXMT ($40B revenue): DRAM
+        \textbf{5. Empaquetat}        & -- & -- \\
+        \textbf{6. Muntatge}          & -- & -- \\
         \bottomrule
     \end{tabularx}
 \end{frame}
 
+% De l'anàlisi que acabem de realitzar podem extreure les
+% següents conclusions
 \frame{
   \frametitle{Conclusions}
   \begin{itemize}
-    \item Es poden introduir vulnerablitats a molts passos de la cadena de subministrament.
-    \item Existeix un oligopoli de disseny i fabricació de xips, per unes poques empreses, controlades o sota l'àrea d'influència de dues potències mundials.
-    \item Son vulnerabilitats difícils d'explotar? % TODO
-    \item Espionatge usuaris? O només espionatge entre Estats? Tema militar, etc. sí que és important.
+    \item \textbf{Superfície d'atac extensa}: Es poden introduir manipulacions des del disseny lògic fins al muntatge final.
+    \item \textbf{Oligopoli geopolític}: El disseny i fabricació estan concentrats en molt poques empreses sota l'òrbita dels EUA o la Xina.
+    \item \textbf{Dificultat dels atacs a realitzar}:
+      \begin{itemize}
+        \item Alterar el silici o soldar implants és molt car: orientat a \textbf{espionatge estatal, defensa i infraestructures crítiques}.
+        \item L'IME i l'AMD PSP són una incògnita.
+        \item El firmware preinfectat (\textit{BadBox}) és barat i sí que arriba a \textbf{usuaris convencionals}.
+      \end{itemize}
   \end{itemize}
 }
 
@@ -601,57 +610,73 @@
 }
 
 \frame{
-Durant dècades, la indústria dels semiconductors s'ha basat en el model de «seguretat per foscor» (security through obscurity): els fabricants mantenen en secret el disseny intern dels xips i el codi del seu firmware sota l'excusa de protegir la propietat intel·lectual.
+  \frametitle{Per què neix l'impuls pel hardware lliure?}
+  \begin{alertblock}{La crisi del model tancat (\textit{security through obscurity})}
+    \begin{itemize}
+      \item Els fabricants mantenen en secret el disseny intern i el firmware per protegir la propietat inte\lgem{}ectual.
+      \item \textit{Spectre/Meltdown}, subsistemes opacs (Intel ME / AMD PSP) i atacs a la cadena (\textit{Supermicro}, \textit{BadBox}, NSA) exigeixen una \textbf{confiança cega} en el disseny i la fabricació.
+    \end{itemize}
+  \end{alertblock}
 
-Tanmateix, la descoberta de vulnerabilitats estructurals (com Spectre i Meltdown), l'existència de subsistemes opacs amb privilegis absoluts (com Intel ME o AMD PSP) i els escàndols d'espionatge a la cadena de subministrament (Supermicro, BadBox, implants de la NSA) van demostrar que aquest model exigeix una confiança cega. Si un govern o una empresa no pot auditar què hi ha dins del silici, no pot saber si un defecte és un error accidental o una porta del darrere (backdoor) intencionada. D'aquesta crisi de confiança neix l'impuls pel hardware lliure.
+  \pause
+  \vspace{0.3cm}
+  \begin{exampleblock}{El canvi de paradigma}
+    El \textbf{hardware lliure} permet l'auditabilitat del disseny dels xips.
+  \end{exampleblock}
 }
-
-
-% 3. Diseño
-% RISC-V: Sólo es el ISA. No implica diseño abierto!.
-
-% Diseño del chip (código RTL (Verilog) del procesador y el firmware) abiertos.
-% -> Detectar fallos antes + que no hay sistemas opacos, backdoors. Auditabilidad máxima.
-
-% 6. Placas base
-% OpenTitan?
-% blobs binarios cifrados en el arranque (Paso 6)?
-
-% Para el resto de la cadena hacen falta inspección física post-fabricación (microscopía/rayos X sobre muestras), PUFs (Physically Unclonable Functions, huellas únicas del silicio grabadas al nacer el chip para detectar falsificaciones) y empaquetado en instalaciones de confianza.
-% 4. Fundición
-% La solución es combinar diseños abiertos con fundiciones regionales aliadas (friend-shoring, impulsado por el European Chips Act): para chips de seguridad, automoción o servidores no hace falta litografía extrema de 2 nm; bastan nodos maduros (12–28 nm) que ya existen en Europa (p. ej., GlobalFoundries, STMicroelectronics o la nueva planta de TSMC en Dresde).
-
-% El hardware lliure elimina la preocupació per què el disseny d'un xip incorpori backdoors. Elimina necessitat de restriccions per 'seguretat nacional'
-% La guerra comercial seguirà,...
-
 
 \frame{
   \frametitle{Solucionar vulnerabilitats i backdoors al disseny}
-RISC-V aporta una arquitectura d'instruccions (ISA) oberta i lliure de llicències, trencant el duopoli d'Intel/AMD (x86) i ARM.
+  \begin{block}{Recordem}
+    \textbf{RISC-V} és només l'ISA (joc d'instruccions), no garanteix que el xip sigui obert. \\
+    Cal publicar el \textbf{codi RTL} (Verilog) i el firmware.
+  \end{block}
 
-Projectes de processadors amb codi RTL obert (com Rocket Chip, BOOM o Ibex) publiquen el disseny lògic complet en Verilog. Això permet que universitats, auditors independents i governs revisin cada transistor virtual abans de fabricar el xip, detectant errors de microarquitectura abans que surtin al mercat i garantint que no hi ha subsistemes opacs ni backdoors ocultes.
-
-OpenTitan (impulsat inicialment per Google i gestionat per lowRISC) és el primer xip de seguretat (Root of Trust) de codi obert a escala comercial. S'integra a les plaques base o servidors per verificar criptogràficament que la BIOS/UEFI i el firmware no hagin estat manipulats (frenant atacs com BadBox o LoJax).
-
-Juntament amb projectes com Coreboot o LinuxBoot, busca eliminar els blobs binaris propietaris durant l'arrencada, fent que tot el procés des que prems el botó d'encesa fins que arrenca el sistema operatiu sigui 100\% auditable.
+  El hardware lliure permet una auditoria pública per a detectar errors abans de
+  la fabricació i garantir que no existeixen subsistemes opacs ni sistemes d'espionatge
+  ocults.
 }
 
 \frame{
-  \frametitle{Fabricació i muntatge: on no hi arriba el disseny obert}
-Tenir el codi obert del xip soluciona el disseny lògic, però no resol la fabricació física. En el moment en què envies un disseny lliure a imprimir a una foneria (foundry) externa, el silici torna a estar exposat a manipulacions físiques (Hardware Trojans) o falsificacions. Per blindar la resta de la cadena calen tres mecanismes complementaris:
+  \frametitle{Solucionar vulnerabilitats i backdoors al firmware}
+  \begin{exampleblock}{\textbf{OpenTitan}}
+  Xip de seguretat (Root of Trust) de disseny obert que s'encarrega de verificar
+  criptogràficament que el firmware d'un dispositiu no ha estat manipulat abans de deixar-lo arrencar. \\
 
-    Inspecció física postfabricació (Pas 4): Anàlisi destructiva sobre mostres aleatòries mitjançant microscòpia electrònica o tomografia de raigs X (obrir el xip amb àcid o decapping) per comprovar que el circuit imprès al silici coincideix fil per randa amb el disseny RTL original.
-
-    PUFs (Physically Unclonable Functions) (Pas 5): Aprofitar la «empremta dactilar» física única que adquireix cada xip en néixer per generar les seves pròpies claus criptogràfiques de forma dinàmica, eliminant la necessitat de gravar claus als fusibles interns i impedint la clonació o el reciclatge de xips falsificats.
-
-    Relocalització aliada (Friend-shoring) i nodes madurs (Pas 4): Combinar dissenys oberts amb fàbriques situades en territori aliat (estratègia impulsada per l'European Chips Act). La gran avantatge estratègica és que, per a xips de seguretat (com OpenTitan), automoció, defensa o controladors de servidors, no cal litografia extrema de 2 nm (el monopoli d'ASML i TSMC); n'hi ha prou amb nodes madurs (12–28 nm), una capacitat industrial que Europa ja té o està ampliant (com GlobalFoundries a Dresden, STMicroelectronics o la nova planta ESMC de TSMC a Alemanya).
+  Inicialment creat per Google.
+  \end{exampleblock}
+  \begin{block}{Altres}
+  Es pot combinar amb \textit{coreboot} o \textit{linuxboot}, projectes que busquen eliminar
+  binaris propietaris durant l'arrencada del sistema.\footnote{No suporten molts dispositius.}
+  \end{block}
 }
 
 \frame{
-  \frametitle{No soluciona la guerra comercial}
-L'adopció del hardware lliure i de la fabricació en nodes madurs desmunta l'excusa de la «seguretat nacional»: si el disseny és transparent, auditable per tothom i fabricat en entorns verificats, desapareix la por que un xip incorpori portes del darrere ocultes d'un país rival.
+  \frametitle{Fabricació i muntatge: no hi arriba el disseny obert}
+  El disseny obert \textbf{no impedeix la manipulació física} a la foneria ni que
+  soldin implants a la placa (\textit{Supermicro}). \\ Calen dues mesures complementàries:
 
-Tanmateix, la guerra comercial continuarà. El conflicte entre els EUA i la Xina no tracta només de ciberseguretat o d'evitar espionatge; és una lluita per l'hegemonia econòmica, el monopoli tecnològic i el control de la potència de càlcul (especialment en intel·ligència artificial i supercomputació, on els nodes punters de 2–3 nm continuen sent imprescindibles). El hardware lliure democratitza la confiança i la seguretat, però no elimina la cursa pel lideratge industrial.
+  \vspace{0.25cm}
+  \begin{itemize}
+    \item \textbf{Inspecció física postfabricació:} Anàlisi destructiva sobre mostres per
+    verificar que el silici coincideix amb el codi RTL.
+    \pause
+    % \item \textbf{PUFs (\textit{Physically Unclonable Functions}):} Aprofita les variacions microscòpiques naturals de cada xip com a empremta única per generar claus, eliminant la necessitat de gravar claus als fusibles interns i impedint la clonació o el reciclatge de xips falsificats.
+    % \pause
+    \item \textbf{\textit{Friend-shoring}:} A Europa ja existeix tecnologia i fàbriques amb la capacitat de fabricar xips de 12--28\,nm, suficient per a molts casos d'ús.
+  \end{itemize}
+}
+
+\frame{
+  \frametitle{Aporta seguretat, però la guerra comercial continua}
+  \begin{itemize}
+    \item L'adopció de hardware lliure elimina les caixes negres i la sospita de \textit{backdoors}
+      al disseny. 
+    \item A més, proporciona més sobirania tecnològica a països no-punters.
+  \end{itemize}
+
+  Però la guerra comercial mai ha sigut només per espionatge. És una lluita per l'hegemonia
+  econòmica i tecnològica d'un d'aquests dos països: i els xips són només un front més.
 }
 
 \end{document}
