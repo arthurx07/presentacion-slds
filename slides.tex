@@ -178,7 +178,7 @@
   \begin{itemize}
     \item \textbf{OpenHW / PULP:} nuclis de processador que es poden llegir i fabricar
     \item \textbf{OpenTitan:} arrel de confiança auditabile
-    \item \textbf{KiCad:} plaques amb esquemes i Gerbers públics
+    \item \textbf{LiteX:} el SoC sencer (nucli, bus i perifèrics) en obert
   \end{itemize}
   \vspace{0.45cm}
   \begin{alertblock}{Una precisió}
@@ -262,7 +262,7 @@
 
 \begin{frame}{La cadena, mirant el cost (1/2)}
   \begin{center}
-    \footnotesize Mateixos passos que l'Artur. Què és cada pas, i si es pot fer \textbf{comú}.
+    \footnotesize La cadena de fabricació d'un xip. Què és cada pas, i si es pot fer \textbf{comú}.
   \end{center}
   \vspace{0.25cm}
   {\small
@@ -272,20 +272,21 @@
     \hline
     \textbf{1. Matèries i oblees}
       & El silici i la làmina on es fabriquen els xips
-      & {\color{green!50!black}\textbf{Sí:}} oblea compartida\par
-        {\color{red!65!black}\textbf{No:}} silici de cada xip \\[0.35em]
+      & \textcolor{green!50!black}{\textbf{Sí:}} oblea compartida\par
+        \textcolor{red!65!black}{\textbf{No:}} silici de cada xip \\[0.35em]
     \textbf{2. Disseny i EDA}
       & El plànol del circuit i el programari per dibuixar-lo
-      & {\color{green!50!black}\textbf{Sí:}} plànol + EDA obert\par
-        {\color{red!65!black}\textbf{No:}} llicència cara \\[0.35em]
+      & \textcolor{green!50!black}{\textbf{Sí:}} plànol + EDA obert\par
+        \textcolor{red!65!black}{\textbf{No:}} llicència cara \\[0.35em]
     \textbf{3. Maquinària}
       & Les màquines que imprimeixen el circuit (ASML)
-      & {\color{red!65!black}\textbf{No:}} es compra o es lloga \\
+      & \textcolor{red!65!black}{\textbf{No:}} es compra o es lloga \\
   \end{tabular}
   }
 \end{frame}
 
 \begin{frame}{La cadena, mirant el cost (2/2)}
+  \usebeamercolor[fg]{normal text}
   {\small
   \renewcommand{\arraystretch}{1.35}
   \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
@@ -293,16 +294,16 @@
     \hline
     \textbf{4. Fundició}
       & La fàbrica que imprimeix l'oblea
-      & {\color{green!50!black}\textbf{Sí:}} accés (Europractice)\par
-        {\color{red!65!black}\textbf{No:}} la fàbrica sencera \\[0.35em]
+      & \textcolor{green!50!black}{\textbf{Sí:}} accés (Europractice)\par
+        \textcolor{red!65!black}{\textbf{No:}} la fàbrica sencera \\[0.35em]
     \textbf{5. Empaquetat, proves, fusibles}
       & Tancar el xip, provar-lo i gravar opcions finals
-      & {\color{red!65!black}\textbf{No:}} cada prova es paga\par
-        {\color{orange!80!black}\textbf{Compte:}} el fusible pot tancar el producte \\[0.35em]
+      & \textcolor{red!65!black}{\textbf{No:}} cada prova es paga\par
+        \textcolor{orange!80!black}{\textbf{Compte:}} el fusible pot tancar el producte \\[0.35em]
     \textbf{6. Placa i firmware}
       & Muntar el xip a la placa i carregar el programari
-      & {\color{green!50!black}\textbf{Sí:}} KiCad + firmware\par
-        {\color{red!65!black}\textbf{No:}} el muntatge físic \\
+      & \textcolor{green!50!black}{\textbf{Sí:}} LiteX + firmware\par
+        \textcolor{red!65!black}{\textbf{No:}} el muntatge físic \\
   \end{tabular}
   }
 \end{frame}
