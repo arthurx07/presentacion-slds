@@ -170,8 +170,197 @@
 \end{frame}
 
 % ==========================================
-% SEGÜENT SECCIÓ DEL GRUP
+% IU ALSINA: INICIATIVES I COSTOS
 % ==========================================
+\section{Iniciatives de hardware lliure}
+
+\begin{frame}{Qui publica el disseny?}
+  \begin{itemize}
+    \item \textbf{OpenHW / PULP:} nuclis de processador que es poden llegir i fabricar
+    \item \textbf{OpenTitan:} arrel de confiança auditabile
+    \item \textbf{KiCad:} plaques amb esquemes i Gerbers públics
+  \end{itemize}
+  \vspace{0.45cm}
+  \begin{alertblock}{Una precisió}
+    RISC-V obre el \textbf{llenguatge} del processador.\\
+    No obliga a publicar el \textbf{disseny} del xip.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{European Processor Initiative}
+  \begin{block}{Què és}
+    Projecte europeu (2018--2026) per fer processadors de supercomputació.
+  \end{block}
+  \vspace{0.3cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Rhea1}
+        \begin{itemize}
+          \item CPU de SiPearl
+          \item 80 nuclis Arm
+          \item Fabricat a TSMC
+          \item Disseny \textbf{tancat}
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{EPAC}
+        \begin{itemize}
+          \item Accelerador RISC-V
+          \item Semidynamics + BSC
+          \item Més a prop de l'obert
+          \item No és un producte lliure
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Què ensenya l'EPI}
+  \begin{itemize}
+    \item Europa \textbf{sí} pot dissenyar un processador gran
+    \pause
+    \vspace{0.3cm}
+    \item Això no és el mateix que fer-lo \textbf{hardware lliure}
+    \pause
+    \vspace{0.3cm}
+    \item Rhea1: silici que arrenca, disseny privat, fàbrica a Taiwan
+  \end{itemize}
+  \vspace{0.4cm}
+  \begin{block}{Pregunta que obre el punt següent}
+    Per què un projecte així no publica el disseny?
+  \end{block}
+\end{frame}
+
+\section{El hardware i els costos}
+
+\begin{frame}{El problema és simple}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Programari}
+        \begin{itemize}
+          \item Escriure costa
+          \item Copiar és gairebé gratis
+          \item Per això el codi obert funciona
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Hardware}
+        \begin{itemize}
+          \item Dissenyar també costa
+          \item Cada còpia és física
+          \item Cada xip es paga
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.45cm}
+  \centering
+  \Large Publicar el disseny \textbf{no} regala el xip.
+\end{frame}
+
+\begin{frame}{La cadena, mirant el cost (1/2)}
+  \begin{center}
+    \footnotesize Mateixos passos que l'Artur. Què és cada pas, i si es pot fer \textbf{comú}.
+  \end{center}
+  \vspace{0.25cm}
+  {\small
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
+    \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
+    \hline
+    \textbf{1. Matèries i oblees}
+      & El silici i la làmina on es fabriquen els xips
+      & {\color{green!50!black}\textbf{Sí:}} oblea compartida\par
+        {\color{red!65!black}\textbf{No:}} silici de cada xip \\[0.35em]
+    \textbf{2. Disseny i EDA}
+      & El plànol del circuit i el programari per dibuixar-lo
+      & {\color{green!50!black}\textbf{Sí:}} plànol + EDA obert\par
+        {\color{red!65!black}\textbf{No:}} llicència cara \\[0.35em]
+    \textbf{3. Maquinària}
+      & Les màquines que imprimeixen el circuit (ASML)
+      & {\color{red!65!black}\textbf{No:}} es compra o es lloga \\
+  \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}{La cadena, mirant el cost (2/2)}
+  {\small
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
+    \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
+    \hline
+    \textbf{4. Fundició}
+      & La fàbrica que imprimeix l'oblea
+      & {\color{green!50!black}\textbf{Sí:}} accés (Europractice)\par
+        {\color{red!65!black}\textbf{No:}} la fàbrica sencera \\[0.35em]
+    \textbf{5. Empaquetat, proves, fusibles}
+      & Tancar el xip, provar-lo i gravar opcions finals
+      & {\color{red!65!black}\textbf{No:}} cada prova es paga\par
+        {\color{orange!80!black}\textbf{Compte:}} el fusible pot tancar el producte \\[0.35em]
+    \textbf{6. Placa i firmware}
+      & Muntar el xip a la placa i carregar el programari
+      & {\color{green!50!black}\textbf{Sí:}} KiCad + firmware\par
+        {\color{red!65!black}\textbf{No:}} el muntatge físic \\
+  \end{tabular}
+  }
+\end{frame}
+
+\begin{frame}{Un exemple que ho explica tot}
+  \begin{alertblock}{Si vas sol}
+    Un joc de màscares avançat: \textbf{desenes de milions} de dòlars.\\
+    Només surt a compte si en vens molts.
+  \end{alertblock}
+  \vspace{0.35cm}
+  \begin{exampleblock}{Si compartiu l'oblea (Europractice)}
+    Diversos dissenys paguen la mateixa màscara.\\
+    Un prototip universitari: del \textbf{5 al 10\%} del cost.\\
+    Amb PDK obert: uns \textbf{10.000 \$} i unes desenes de xips.
+  \end{exampleblock}
+  \vspace{0.35cm}
+  Això és un element comú: no és gratis, és \textbf{compartit}.
+\end{frame}
+
+\begin{frame}{Què queda}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Es pot compartir}
+        \begin{itemize}
+          \item El plànol
+          \item Les eines (EDA)
+          \item L'accés a la fàbrica
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{No es pot compartir}
+        \begin{itemize}
+          \item El silici de cada unitat
+          \item La litografia (ASML)
+          \item La fàbrica sencera
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.4cm}
+  \begin{block}{Conseqüència}
+    Per això l'EPI va protegir Rhea1: el cost és tan alt\\
+    que el disseny es tracta com a secret industrial.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Sobirania no és el mateix que llibertat}
+  \begin{center}
+    \Large Un país pot tenir el seu processador\\
+    i continuar sense un plànol públic.
+  \end{center}
+  \vspace{0.55cm}
+  \begin{block}{El que queda obert}
+    El cost decideix què es pot compartir.\\
+    Les \textbf{patents} decideixen què es pot reutilitzar.
+  \end{block}
+\end{frame}
 
 \section{L'efecte de les patents en el hardware i les limitacions en el hardware lliure}
 
