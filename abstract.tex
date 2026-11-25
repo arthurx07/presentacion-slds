@@ -15,10 +15,6 @@
 \definecolor{accent}{HTML}{3b3c36}
 % \renewcommand{\familydefault}{\sfdefault}
 
-% - portada
-% - índex
-% - 1 pàgina per persona (si son 2 permès pero algo fas malament)
-% - conclusions
 \begin{document}
 \begin{titlepage}
     \centering
@@ -26,7 +22,7 @@
 
     {\Huge \bfseries Hardware Lliure \par}
     \vspace{0.5cm}
-    {\Large \itshape ¿La Nova Frontera? \par}
+    {\Large \itshape La Nova Frontera? \par}
 
     \vfill
 
@@ -193,159 +189,35 @@ patents que va usar per la creació del producte generen encara avui dia un enor
 \clearpage
 
 {\bfseries\color{accent} Artur Leivar Guiu \par}\vspace{-0.4cm}
-\section{Seguretat del hardware: necessitat i guerra comercial}
-\textbf{Títol: Seguretat del hardware (0:45min)}
+\section{Seguretat al hardware i guerra comercial}
 
-En aquesta secció analitzarem si les mesures actuals de control i protecció sobre
-els xips, tant el tancament dels seus dissenys com les restriccions internacionals, responen
-a una necessitat tècnica real de ciberseguretat (fer els xips més segurs pels usuaris) o si
-s'estan utilitzan com una arma dins dins d'una guerra comercial i geopolítica entre els
-Estats Units i la Xina per frenar el desenvolupament tecnològic i militar del rival.
-(aixó ara està a l'ordre del día, també és per secret comercial entre una empresa i
-una altra).
+\textbf{Restriccions comercials entre els EUA i la Xina}
 
-\textbf{Seguretat (aspectes tècnics) (2:45min)}
+Des del 2019, els Estats Units han exclòs Huawei i ZTE de les xarxes 5G per risc d'espionatge, han prohibit exportar xips avançats d'IA (NVIDIA, AMD) i maquinària EUV (ASML), han destinat subsidis a relocalitzar fàbriques i han aplicat aranzels del 50\,\% als semiconductors xinesos. La Xina ha respost vetant les memòries Micron en infraestructures crítiques (2023), restringint l'exportació de gal·li i germani i aplicant la directiva «Delete A» (2022--2027) per substituir processadors Intel i AMD al sector públic per dissenys propis o basats en RISC-V. El debat és si aquests vetos responen a motius reals de seguretat o a una disputa econòmica, i quin paper hi té el hardware lliure.
 
-Ara recordarem la cadena de suministre dels xips que s'ha explicat anteriorment, i
-estudiarem quins son els possibles riscos de seguretat que poden existir a cada pas.
-Quins són els possibles vectors d'atac a cada pas.
+\textbf{Vulnerabilitats i vectors d'atac}
 
-1. Matèries primes i oblees (X)
-2. Disseny i programari EDA
-    - Vulnerabilitats físiques intrínseques:
-    Fallades de microarquitectura com Spectre, Meltdown o Rowhammer (i eines d'auditoria
-    externa a cegues com Sandsifter per detectar instruccions ocultes en x86).
-    
-    - Subsistemes opacs / possibles backdoors: Segons l'EFF i Damien Zammit,
-    l'Intel Management Engine (ME) (i l'AMD PSP) té accés total a la memòria,
-    pantalla, teclat i xarxa, i incorpora el seu propi servidor TCP/IP.
+Una vulnerabilitat al hardware és un defecte o característica en el disseny lògic (RTL), la implementació o la fabricació dels components físics que pot comprometre la confidencialitat, la integritat o la disponibilitat d'un sistema (tríada CIA, adaptat de MITRE CWE-1194). Al llarg de la cadena de subministrament destaquen tres vectors d'atac:
+\begin{itemize}
+    \item \textbf{Disseny i EDA:} fallades de microarquitectura (\textit{Spectre}, \textit{Meltdown}, \textit{Rowhammer}) i subsistemes opacs com l'Intel Management Engine (ME) o l'AMD PSP. L'Intel ME executa un MINIX3 modificat fins i tot amb l'equip apagat, té accés a la RAM, als discos encriptats, als perifèrics i a la xarxa, i ha acumulat vulnerabilitats crítiques (2017--2019). El fet que la NSA demanés a Intel el bit ocult \textit{HAP} per aturar-lo en equips classificats evidencia la desconfiança que genera.
+    \item \textbf{Foneria:} alteracions deliberades del circuit durant la impressió de l'oblia (\textit{Hardware Trojans}), com el presumpte \textit{kill switch} als radars antimíssils sirians atribuït a l'Operació «The Orchard» (2007).
+    \item \textbf{Muntatge i firmware:} implants físics a plaques base ---casos \textit{Supermicro} (2018, negat oficialment) o \textit{Shotgiant} de la NSA (2013)--- i firmware preinfectat de fàbrica, com la xarxa \textit{BadBox}, present en centenars de milers de dispositius Android des del 2023.
+\end{itemize}
 
-    La «seguretat per enfoscament» és el pitjor model de seguretat: no es pot desactivar
-    perquè ve gravat al silici (ni tan sols amb Libreboot en equips moderns).
+\textbf{Oligopoli geopolític i abast dels riscos}
 
-3. Fabricació de maquinària (X)
-4. Fundició o impressió de l'oblea
-    Risc d'introducció de Hardware Trojans físics durant la fabricació del silici.
-5. Empaquetat, proves i gravat de fusibles
-    Risc de manipulació de claus criptogràfiques gravades als fusibles o substitució per xips falsificats.
-6. Muntatge en placa i càrrega de firmware
-    Atacs a la cadena de subministrament abans d'arribar al client, com el cas Supermicro
-    (The Big Hack) o la xarxa de firmware preinfectat BadBox.
+La producció de xips es concentra en molt poques empreses dividides en dos blocs. Sota l'òrbita nord-americana hi ha les oblies del Japó ($>50\,\%$), el disseny (Intel, AMD, NVIDIA, Qualcomm, Apple, ARM), el monopoli d'ASML en litografia EUV i les foneries punteres (TSMC, Samsung); la Xina controla minerals crítics i desenvolupa alternatives pròpies (HiSilicon, T-Head, SMEE, SMIC, YMTC, CXMT). Alterar el silici o soldar implants té un cost alt i s'adreça a l'espionatge estatal, la defensa i les infraestructures crítiques; els subsistemes opacs continuen sent una incògnita, mentre que el firmware preinfectat (\textit{BadBox}) és barat i sí que arriba als usuaris convencionals.
 
-\textbf{Guerra comercial (3:15min)}
-...Entre EUA i Xina sobre la cadena de subministrament
+\textbf{El paper del hardware lliure i els seus límits}
 
-Un dels punts crítics a la guerra comercial entre els Estats Units i la Xina
-son els avenços tecnològics, dels quals una base molt important és el hardware.
+El model tancat (\textit{security through obscurity}) exigeix una confiança cega en el fabricant. El hardware lliure permet auditar públicament el disseny abans de fabricar-lo, sempre que no es confongui RISC-V (només l'ISA) amb un xip obert: cal publicar el codi RTL (Verilog) i el firmware per descartar portes del darrere. A l'arrencada, xips d'arrel de confiança com \textit{OpenTitan} (impulsat inicialment per Google) verifiquen criptogràficament que el firmware no ha estat manipulat i es poden combinar amb \textit{coreboot} o \textit{linuxboot}, tot i el seu suport reduït.
 
-Aquests dos estats han aplicat restriccions i prohibicions d'exportació per evitar
-l'espionatge (del cual us parlarà més endavant el meu company) i frenar l'avenç
-tecnològic del rival, aprofitant els colls d'ampolla de cada fase:
-
-1. Matèries primes i oblees
-    - Extracció minera
-        R.D. Congo (Cobalt i tàntal i coltan), Sudáfrica i Mozambic (Grafit), Xina
-    
-    - Refinatge mundial
-        Xina: Refinatge químic dels materials (80-95% gal.li, germani, grafit, terres rares)
-        Japó:
-            JSR  i TOK: químics
-            Shin-Etsu y SUMCO fabriquen >50% de las oblees
-2. Disseny i programari EDA
-    EUA
-        - Disseny: NVIDIA, AMD, Qualcomm, Apple, Intel
-        - programari EDA: Synopsys, Cadence, Siemens
-    Regne Unit: ARM
-    Xina:
-        - Disseny: HiSilicon (Huawei), Alibaba (T-Head), Loongson
-        - Programari EDA: Empyrean (per darrere opcions EUA)
-    RISC-V + EDA obert ¿?
-3. Fabricació de maquinària
-    Països Baixos: ASML (monopoli mundial en litografia EUV)
-    EUA: (Applied Materials, Lam Research)
-    Japó: (Tokyo Electron)
-    Xina: SMEE (tecnologia 10anys antiguitat respecte ASML, 90-28nm)
-4. Fundició o impressió de l'oblea
-    Taiwan: TSM (90% xips més avançats)
-    Corea del Sud: Samsung
-    EUA: Intel, que ha perdut lideratge
-    Xina: SMIC (no tant avançada per les restriccions d'EUA)
-5. Empaquetat, proves i gravat de fusibles
-    Taiwan: ASE
-    Xina: JCET
-    Plantes al sud-est asiàtic (Malàsia, Vietnam)
-6. Muntatge en placa i càrrega de firmware
-    Taiwan i Xina: (Foxconn, ASUS, Supermicro)
-
-En aquesta guerra comercial es poden diferenciar dos grans blocs:
-
-Intel, AMD, NVIDIA, Qualcomm, Apple (EEUU)          | SMIC, Huawei, Alibaba (Xina continental)
-ASML (Països Baixos, país OTAN)                     | SMEE
-TSMC (Taiwán, dependència tecnològica i militar)    | 
-Samsung (Corea del Sud, 28.5k militars EUA)         |
-Oblees i químics (Japó, aliat estratègic)           |
-
-I l'historial és el següent
-
-Historial:
-EUA                                                 | XINA
-- 2019: veta huawei i zte xarxes 5G                 | - Veto xips memòries Micron a infraestructures
-    (qui té un telèfon Huawei els últims 5anys)     |    crítiques
-- 2019-2023: pressió diplomàtica i legal ASML no    | - Explusar progressivament Intel i AMD ordinadors
-    vengui màquines EUV a Xina                      |    públics.
-- 2022-actual: prohibició NVIDIA i AMD exportar xip | - Restringeix l'exportació de matèries
-    IA a la xina.                                   |    primes als EUA i UE com represalia.
-- 2022-2023: aprovació subsidis multimilionaris per |
-    portar fàbriques fora d'Àsia (US CHIPS Act de   |
-    52.700 M\$ i European Chips Act de 43.000 M€).   |
-
-\textbf{Paper del hardware lliure (2:15min)}
-* Per què millora la seguretat?
-
-Sustituye la seguridad por oscuridad por auditabilidad total: el código RTL (Verilog) del procesador y el firmware son públicos, permitiendo verificar línea por línea que no hay subsistemas opacos tipo IME/PSP y detectar fallos antes.
-
-* Són suficients RISC-V i Open-Titan? ¿Com es poden arreglar les altres vulnerabilitats
-en la cadena de suministrament?
-
-No bastan por sí solos. RISC-V (arquitectura abierta) y OpenTitan (chip raíz de confianza abierto) blindan el Paso 2 (Diseño) y el Paso 6 (Firmware), pero no impiden un troyano físico insertado en una fábrica (Paso 4). Para el resto de la cadena hacen falta inspección física post-fabricación (microscopía/rayos X sobre muestras), PUFs (Physically Unclonable Functions, huellas únicas del silicio grabadas al nacer el chip para detectar falsificaciones) y empaquetado en instalaciones de confianza.
-
-* Com es pot arreglar el tema que es continúen necessitant foses físiques (foundries)?
-
-No hace falta que cada proyecto libre construya una fábrica de 20.000 millones (eso ya lo explica el compañero del Punto 3). La solución es combinar diseños abiertos con fundiciones regionales aliadas (friend-shoring, impulsado por el European Chips Act): para chips de seguridad, automoción o servidores no hace falta litografía extrema de 2 nm; bastan nodos maduros (12–28 nm) que ya existen en Europa (p. ej., GlobalFoundries, STMicroelectronics o la nueva planta de TSMC en Dresde).
-
-* Com redueix el hardware lliure els vectors d'atac?
-
-Arquitectures obertes com RISC-V i projectes com OpenTitan eliminen la seguretat per enfoscament. Permeten auditar el codi RTL línia per línia (evitant portes del darrere ocultes al Pas 2) i eliminar els blobs binaris xifrats a l'arrencada (Pas 6).
-
-Cierra los dos vectores donde el usuario estaba indefenso: elimina las puertas traseras ocultas en el diseño (Paso 2) y elimina los blobs binarios cifrados en el arranque (Paso 6), permitiendo arranque verificable de extremo a extremo.
-
-* A qui interessa el hardware lliure en la guerra comercial? (igual dice compañero)
-    - A Europa (EPI) per assolir sobirania tecnològica davant dels EUA i l'Àsia.
-
-    - A la Xina (Huawei, Alibaba) per esquivar els vetos d'EUA sobre ARM i x86.
-
-    - Als usuaris i empreses (com Google amb OpenTitan) com a eina d'auditabilitat
-        per garantir la seguretat real del silici.
-        Por eficiencia y control interno (NVIDIA usa núcleos RISC-V dentro de sus GPUs y Google impulsa OpenTitan para auditar sus propios centros de datos), aunque el gobierno de EE. UU. debate si restringir la colaboración abierta con China.
-
-
-Herramienta de auditabilidad, frente al tema de la mayor seguridad, y soberanía,
-frente al tema que un país controle toda la fabricación de hardware.
-
-Conclusió (Síntesi): El hardware lliure respon als dos eixos del debat: és una eina d'auditabilitat per resoldre la necessitat tècnica de seguretat, i una eina de sobirania per evitar que un sol país controli tota la cadena de fabricació i ús del hardware.
+El disseny obert no evita, però, la manipulació física a la foneria ni els implants en placa. Cal complementar-lo amb inspeccions físiques destructives sobre mostres per comprovar que el silici coincideix amb l'RTL i amb \textit{friend-shoring}, aprofitant que Europa ja disposa de fàbriques en nodes de 12--28\,nm suficients per a molts usos. El hardware lliure elimina les caixes negres i aporta sobirania tecnològica a països fora de l'eix EUA--Xina, però no aturarà la guerra comercial: els xips no en són la causa, sinó un front més en la disputa per l'hegemonia econòmica i tecnològica entre les dues potències.
 \clearpage
 
 {\bfseries\color{accent} Pol Gay Hernández \par}\vspace{-0.4cm}
 \section{¿Es el HW un arma y debe\slash{}puede ser controlada? ¿Por quien?}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla ipsum a elit vestibulum convallis. Pellentesque ex sem, tincidunt vel dolor sit amet, ornare tincidunt erat. Ut orci ex, aliquam sed augue non, convallis mollis tellus. Duis non ligula viverra, molestie ante eu, elementum diam. Quisque sed accumsan est, ac ornare sapien. Quisque lobortis scelerisque viverra. Fusce rhoncus interdum sem nec placerat. Praesent tincidunt ut magna in ultricies. Sed vitae tincidunt diam. Donec commodo non purus a luctus. Phasellus imperdiet ornare elit, in luctus arcu consequat id.
-
 \section{Para quien tiene sentido el HW libre y para quien es un problema}
-Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. .
 \clearpage
-
-\section*{Conclusions generals}
-\phantomsection
-\addcontentsline{toc}{section}{Conclusions generals}
-Suspendisse tristique mauris vitae posuere aliquam. Mauris rutrum, dui quis mollis consequat, turpis nisl porttitor tortor, vel pharetra ante nulla ac eros. Nulla facilisi. Pellentesque ultricies facilisis arcu, sed facilisis velit aliquet et. Donec ullamcorper ultricies egestas. Maecenas at ex in dui sagittis pellentesque non non urna. In felis magna, placerat at gravida id, venenatis ut sem. Sed sit amet aliquet mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rutrum aliquam arcu, et tristique augue luctus tempus. Nullam vitae est tortor. Aliquam vitae odio eget lectus pretium lobortis. Nunc ut augue id ipsum cursus congue. .
 
 \end{document}
