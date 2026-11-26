@@ -83,7 +83,7 @@ Les llicències de software (GPL, MIT) es basen en els drets d'autor, insuficien
 
 \textbf{Qui publica el disseny}
 
-Una iniciativa de hardware lliure és aquella que publica el plànol: el que cal per estudiar-lo, fabricar-lo i modificar-lo. L'OpenHW Group i PULP (ETH Zuric i Universitat de Bolonya) publiquen nuclis de processador. OpenTitan publica una arrel de confiança auditabile. LiteX permet publicar el SoC sencer: nucli, bus i perifèrics es descriuen en obert i se'n genera el RTL. RISC-V, en canvi, només obre el llenguatge del processador: no obliga a publicar el circuit. Es pot fer un xip compatible i guardar-se el disseny.
+Una iniciativa de hardware lliure és aquella que publica el plànol: el que cal per estudiar-lo, fabricar-lo i modificar-lo. L'OpenHW Group i PULP (ETH Zuric i Universitat de Bolonya) publiquen el nucli del processador: el circuit es pot llegir i fabricar. OpenTitan publica la peça que comprova que l'ordinador arrenca amb un programa de confiança; el plànol és públic i es pot revisar. LiteX no és un xip: serveix per descriure'n un de sencer, el nucli i tot el que l'envolta, i treure'n el plànol. RISC-V, en canvi, només obre el llenguatge del processador: no obliga a publicar el circuit. Es pot fer un xip compatible i guardar-se el disseny.
 
 \textbf{La European Processor Initiative}
 
@@ -97,7 +97,7 @@ Al programari, escriure costa i copiar és gairebé gratis: el codi obert repart
 
 \textbf{La cadena de fabricació, mirant el cost}
 
-Els mateixos passos de la cadena física es poden llegir així. Matèries primeres i oblees: el silici de cada unitat es compra; el que es pot compartir és l'oblea (diversos dissenys a la mateixa làmina). Disseny i programari EDA: el plànol i les eines obertes sí; la llicència propietària no. Fabricació de maquinària: la litografia d'ASML es compra o es lloga, no hi ha «ASML lliure». Fundició: la fàbrica no és teva; el que es pot fer comú és l'accés (Europractice). Empaquetat, proves i fusibles: cada prova es paga per unitat, i el fusible pot tancar funcions després de fabricar. Muntatge en placa i firmware: LiteX i el firmware del SoC es poden publicar; el muntatge físic no.
+Publicar el plànol no paga fabricar el xip. El material: l'oblea, la làmina on es fan molts xips alhora, es pot compartir; el silici de cada xip es compra. El plànol: el dibuix obert es comparteix, el programa de pagament no. Les màquines que imprimeixen el dibuix, com les d'ASML, es compren o es lloguen. La fàbrica: s'hi pot entrar amb altres, via Europractice, però la fàbrica sencera no és teva. Provar i tancar: cada prova es paga, i un fusible gravat al xip pot apagar funcions després de fabricar. La placa: el plànol del sistema i el programa es poden publicar; muntar cada placa, no.
 
 L'exemple clar és l'oblea compartida d'Europractice: sol, un joc de màscares avançat costa desenes de milions; compartit, un prototip universitari baixa al 5--10\%, i amb un PDK obert una plaça pot sortir a uns 10.000 dòlars. Això no és gratis: és compartit. Per això l'EPI va protegir Rhea1: quan la inversió és tan alta, el disseny es tracta com a secret industrial. El límit següent ja no és només el cost: les patents poden impedir la reutilització del plànol.
 \clearpage

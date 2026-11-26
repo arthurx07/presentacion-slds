@@ -187,11 +187,14 @@
 
 \begin{frame}{Qui publica el disseny?}
   \begin{itemize}
-    \item \textbf{OpenHW / PULP:} nuclis de processador que es poden llegir i fabricar
-    \item \textbf{OpenTitan:} arrel de confiança auditabile
-    \item \textbf{LiteX:} el SoC sencer (nucli, bus i perifèrics) en obert
+    \item \textbf{OpenHW / PULP}\\
+      Publiquen el nucli del processador. El circuit es pot llegir i fabricar.
+    \item \textbf{OpenTitan}\\
+      Publica la peça que comprova que l'ordinador arrenca amb un programa de confiança. El plànol es pot revisar.
+    \item \textbf{LiteX}\\
+      No és un xip. Serveix per descriure'n un de sencer, el nucli i tot el que l'envolta, i treure'n el plànol.
   \end{itemize}
-  \vspace{0.45cm}
+  \vspace{0.25cm}
   \begin{alertblock}{Una precisió}
     RISC-V obre el \textbf{llenguatge} del processador.\\
     No obliga a publicar el \textbf{disseny} del xip.
@@ -272,51 +275,44 @@
 \end{frame}
 
 \begin{frame}{La cadena, mirant el cost (1/2)}
-  \begin{center}
-    \footnotesize La cadena de fabricació d'un xip. Què és cada pas, i si es pot fer \textbf{comú}.
-  \end{center}
-  \vspace{0.25cm}
-  {\small
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
-    \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
-    \hline
-    \textbf{1. Matèries i oblies}
-      & El silici i la làmina on es fabriquen els xips
-      & {\color{green!50!black}\textbf{Sí:}} oblia compartida\par
-        {\color{red!65!black}\textbf{No:}} silici de cada xip \\[0.35em]
-    \textbf{2. Disseny i EDA}
-      & El plànol del circuit i el programari per dibuixar-lo
-      & \textcolor{green!50!black}{\textbf{Sí:}} plànol + EDA obert\par
-        \textcolor{red!65!black}{\textbf{No:}} llicència cara \\[0.35em]
-    \textbf{3. Maquinària}
-      & Les màquines que imprimeixen el circuit (ASML)
-      & \textcolor{red!65!black}{\textbf{No:}} es compra o es lloga \\
-  \end{tabular}
-  }
+  Publicar el plànol no paga fabricar el xip. Els tres primers passos:
+  \vspace{0.35cm}
+  \begin{enumerate}
+    \setlength{\itemsep}{0.55em}
+    \item \textbf{El material}\\
+      Silici, i l'oblea: la làmina on es fan molts xips alhora.\\
+      \textcolor{green!50!black}{L'oblea es pot compartir.}
+      \textcolor{red!65!black}{El silici de cada xip es compra.}
+    \item \textbf{El plànol}\\
+      El dibuix del circuit, i el programa amb què es dibuixa.\\
+      \textcolor{green!50!black}{El plànol obert es comparteix.}
+      \textcolor{red!65!black}{El programa de pagament, no.}
+    \item \textbf{Les màquines}\\
+      Imprimeixen aquest dibuix sobre l'oblea. ASML en fabrica les més avançades.\\
+      \textcolor{red!65!black}{No es comparteixen: es compren o es lloguen.}
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{La cadena, mirant el cost (2/2)}
   \usebeamercolor[fg]{normal text}
-  {\small
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabular}{@{}p{2.6cm}p{4.3cm}p{3.5cm}@{}}
-    \textbf{Pas} & \textbf{Què és} & \textbf{Es pot fer comú?} \\
-    \hline
-    \textbf{4. Foneria}
-      & La fàbrica que imprimeix l'oblia
-      & {\color{green!50!black}\textbf{Sí:}} accés (Europractice)\par
-        {\color{red!65!black}\textbf{No:}} la fàbrica sencera \\[0.35em]
-    \textbf{5. Empaquetat, proves, fusibles}
-      & Tancar el xip, provar-lo i gravar opcions finals
-      & \textcolor{red!65!black}{\textbf{No:}} cada prova es paga\par
-        \textcolor{orange!80!black}{\textbf{Compte:}} el fusible pot tancar el producte \\[0.35em]
-    \textbf{6. Placa i firmware}
-      & Muntar el xip a la placa i carregar el programari
-      & \textcolor{green!50!black}{\textbf{Sí:}} LiteX + firmware\par
-        \textcolor{red!65!black}{\textbf{No:}} el muntatge físic \\
-  \end{tabular}
-  }
+  I els tres passos fins a tenir una placa:
+  \vspace{0.35cm}
+  \begin{enumerate}
+    \setcounter{enumi}{3}
+    \setlength{\itemsep}{0.55em}
+    \item \textbf{La fàbrica}\\
+      És on s'imprimeix l'oblea.\\
+      \textcolor{green!50!black}{S'hi pot entrar amb altres, via Europractice.}
+      \textcolor{red!65!black}{La fàbrica sencera, no.}
+    \item \textbf{Provar i tancar}\\
+      Es comprova que el xip funciona i es graven opcions finals.\\
+      \textcolor{red!65!black}{Cada prova es paga.}
+      \textcolor{orange!80!black}{Un fusible gravat al xip pot apagar funcions després.}
+    \item \textbf{La placa}\\
+      El xip es munta i s'hi carrega el programa.\\
+      \textcolor{green!50!black}{El plànol del sistema i el programa es poden publicar.}
+      \textcolor{red!65!black}{Muntar cada placa, no.}
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{Un exemple que ho explica tot}
@@ -340,7 +336,7 @@
       \begin{exampleblock}{Es pot compartir}
         \begin{itemize}
           \item El plànol
-          \item Les eines (EDA)
+          \item Les eines per dibuixar el plànol
           \item L'accés a la fàbrica
         \end{itemize}
       \end{exampleblock}
