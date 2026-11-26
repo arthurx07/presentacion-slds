@@ -586,7 +586,7 @@
     \item \textbf{Dificultat dels atacs a realitzar}:
       \begin{itemize}
         \item Alterar el silici o soldar implants és molt car: orientat a \textbf{espionatge estatal, defensa i infraestructures crítiques}.
-        \item L'IME i l'AMD PSP són una incògnita.
+        \item L'Intel ME i l'AMD PSP són una incògnita.
         \item El firmware preinfectat (\textit{BadBox}) és barat i sí que arriba a \textbf{usuaris convencionals}.
       \end{itemize}
   \end{itemize}
@@ -596,11 +596,11 @@
 
 \frame{
   \frametitle{Per què neix l'impuls pel hardware lliure?}
-  \begin{alertblock}{La crisi del model tancat (\textit{security through obscurity})}
-    \begin{itemize}
-      \item Els fabricants mantenen en secret el disseny intern i el firmware per protegir la propietat inte\lgem{}ectual.
-      \item \textit{Spectre/Meltdown}, subsistemes opacs (Intel ME / AMD PSP) i atacs a la cadena (\textit{Supermicro}, \textit{BadBox}, NSA) exigeixen una \textbf{confiança cega} en el disseny i la fabricació.
-    \end{itemize}
+  \begin{alertblock}{La fi de \textit{security through obscurity}}
+  Els fabricants mantenen en secret el disseny i el firmware per protegir la propietat
+    inte\lgem{}ectual.
+
+  S'exigeix una \textbf{confiança cega} en el disseny i la fabricació.
   \end{alertblock}
 
   \vspace{0.3cm}
@@ -619,6 +619,9 @@
   El hardware lliure permet una auditoria pública per a detectar errors abans de
   la fabricació i garantir que no existeixen subsistemes opacs ni sistemes d'espionatge
   ocults.
+
+  \begin{exampleblock}{Més transparència quan es descobreix una vulnerabilitat}
+  \end{exampleblock}
 }
 
 \frame{
@@ -629,10 +632,10 @@
 
   Inicialment creat per Google.
   \end{exampleblock}
-  \begin{block}{Altres}
-  Es pot combinar amb \textit{coreboot} o \textit{linuxboot}, projectes que busquen eliminar
-  binaris propietaris durant l'arrencada del sistema.\footnote{No suporten molts dispositius.}
-  \end{block}
+  % \begin{block}{Altres}
+  % Es pot combinar amb \textit{coreboot} o \textit{linuxboot}, projectes que busquen eliminar
+  % binaris propietaris durant l'arrencada del sistema.\footnote{No suporten molts dispositius.}
+  % \end{block}
 }
 
 \frame{
